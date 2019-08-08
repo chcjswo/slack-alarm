@@ -3,7 +3,7 @@ const env = process.env.NODE_ENV || 'development';
 
 /**
  * 슬랙으로 문자 보내기
- * @param {string} message 슬랙으로 보낼 메시지
+ * @param {object} message 슬랙으로 보낼 메시지
  * @param {function} cb callback function
  */
 const sendSlack = (message, cb) => {
