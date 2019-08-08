@@ -1,10 +1,17 @@
 const schedule = require('node-schedule');
 const got = require('got');
 const util = require('./util');
+const http = require('http');
 
 require("dotenv").config();
 
 console.log('업무 알람을 시작 합니다.');
+
+http.createServer((request, response) => {
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write('Hello slack-alarm');
+    response.end();
+}).listen(process.env.PORT || 3100);
 
 /**
  * 출근 알림
