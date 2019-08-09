@@ -7,11 +7,24 @@ require("dotenv").config();
 
 console.log('업무 알람을 시작 합니다.');
 
-http.createServer((request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.write('Hello slack-alarm');
-    response.end();
+http.createServer((req, res) => {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write('Hello slack-alarm');
+    res.end();
 }).listen(process.env.PORT || 3100);
+
+/**
+ * 슬랙 메시지 보내기
+ *
+ * @param message 메시지
+ */
+const sendMessage2Slack = (message) => {
+    util.sendSlack(message, (err) => {
+        if (err) {
+            console.error('에러 발생 ===> ', err);
+        }
+    });
+};
 
 /**
  * 출근 알림
@@ -42,11 +55,10 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
         }]
     };
 
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
+    // 슬랙 메시지 보내기
+    sendMessage2Slack(message);
+
+    console.log('업무 시작 알림을 보냈습니다.');
 });
 
 /**
@@ -66,11 +78,10 @@ schedule.scheduleJob('0 18 * * 1-4', () => {
         }]
     };
 
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
+    // 슬랙 메시지 보내기
+    sendMessage2Slack(message);
+
+    console.log('퇴근 알림을 보냈습니다.');
 });
 
 /**
@@ -84,17 +95,16 @@ schedule.scheduleJob('0 18 * * 5', () => {
             color: '#C35FB3',
             fields: [{
                 title: '퇴근 시간 알림',
-                value: '완전 신나는 불금 퇴근 시간 입니다. 술이라도 뽀지게 하세요~\n앗!! 일일 업무보고는 작성 하셨나요?',
+                value: '완전 신나는 불금 퇴근 시간 입니다.\n술이라도 뽀지게 하세요~\n앗!! 일일 업무보고는 작성 하셨나요?',
                 short: false
             }]
         }]
     };
 
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
+    // 슬랙 메시지 보내기
+    sendMessage2Slack(message);
+
+    console.log('퇴근 알림을 보냈습니다.');
 });
 
 /**
@@ -108,17 +118,16 @@ schedule.scheduleJob('55 10 * * 2', () => {
             color: '#00FFFF',
             fields: [{
                 title: '회의 알림',
-                value: '5분 후에 주간업무 회의가 시작 합니다.',
+                value: '5분 후에 주간업무 회의를 시작 합니다.',
                 short: false
             }]
         }]
     };
 
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
+    // 슬랙 메시지 보내기
+    sendMessage2Slack(message);
+
+    console.log('회의 알림을 보냈습니다.');
 });
 
 /**
@@ -132,17 +141,16 @@ schedule.scheduleJob('55 14 * * 3', () => {
             color: '#00FFFF',
             fields: [{
                 title: '회의 알림',
-                value: '5분 후에 TRS 주간업무 회의가 시작 합니다.',
+                value: '5분 후에 TRS 주간업무 회의를 시작 합니다.',
                 short: false
             }]
         }]
     };
 
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
+    // 슬랙 메시지 보내기
+    sendMessage2Slack(message);
+
+    console.log('회의 알림을 보냈습니다.');
 });
 
 /**
@@ -162,9 +170,8 @@ schedule.scheduleJob('0 12 * * 1-5', () => {
         }]
     };
 
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
+    // 슬랙 메시지 보내기
+    sendMessage2Slack(message);
+
+    console.log('점심 알림을 보냈습니다.');
 });

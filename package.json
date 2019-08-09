@@ -1,16 +1,16 @@
 {
   "name": "slack-alarm",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "슬랙 업무 알람",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "heroku-postbuild": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["slack", "business"],
+  "author": "chcjswo",
+  "license": "MIT",
   "dependencies": {
     "got": "^9.6.0",
     "node-schedule": "^1.3.2",
