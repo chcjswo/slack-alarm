@@ -33,5 +33,6 @@ module.exports = {
             "always"
         ],
         "no-console": "off",
+        "object-curly-spacing": 2
     }
 };

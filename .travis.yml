@@ -1,0 +1,14 @@
+language: node_js
+sudo: required
+node_js:
+  - "10.15.3"
+install:
+  - yarn install
+script:
+  - yarn test
+cache:
+   directories:
+     - node_modules
+branches:
+  only:
+    - master
