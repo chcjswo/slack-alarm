@@ -1,14 +1,14 @@
 const schedule = require('node-schedule');
 const got = require('got');
-const util = require('./util');
 const http = require('http');
+const util = require('./util');
 
-require("dotenv").config();
+require('dotenv').config();
 
 console.log('업무 알람을 시작 합니다.');
 
 http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
     res.write('Hello slack-alarm');
     res.end();
 }).listen(process.env.PORT || 3100);
@@ -34,8 +34,8 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
         baseUrl: 'https://andruxnet-random-famous-quotes.p.mashape.com',
         headers: {
             'X-Mashape-Key': process.env.MashapeKey,
-            'Accept': 'application/json'
-        }
+            Accept: 'application/json',
+        },
     });
 
     // quotes 사이트 호출하고 메시지 받기
@@ -49,10 +49,11 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
             color: '#00FFFF',
             fields: [{
                 title: `${JSON.parse(data.body)[0].author}`,
-                value: `${JSON.parse(data.body)[0].quote}`,
-                short: false
-            }]
-        }]
+                value: `${JSON.parse(data.body)[0].quote}\n\n
+                        10분 후에는 데일리 스탠드업 미팅을 시작합니다.`,
+                short: false,
+            }],
+        }],
     };
 
     // 슬랙 메시지 보내기
@@ -73,9 +74,9 @@ schedule.scheduleJob('0 18 * * 1-4', () => {
             fields: [{
                 title: '퇴근 알림',
                 value: '오늘 하루도 수고 하셨습니다. 안녕히 가세요.\n앗!! 일일 업무보고는 작성 하셨나요?',
-                short: false
-            }]
-        }]
+                short: false,
+            }],
+        }],
     };
 
     // 슬랙 메시지 보내기
@@ -96,9 +97,9 @@ schedule.scheduleJob('0 18 * * 5', () => {
             fields: [{
                 title: '퇴근 시간 알림',
                 value: '완전 신나는 불금 퇴근 시간 입니다.\n술이라도 뽀지게 하세요~\n앗!! 일일 업무보고는 작성 하셨나요?',
-                short: false
-            }]
-        }]
+                short: false,
+            }],
+        }],
     };
 
     // 슬랙 메시지 보내기
@@ -115,13 +116,13 @@ schedule.scheduleJob('55 10 * * 2', () => {
         username: '업무 알람',
         icon_emoji: ':bullhorn:',
         attachments: [{
-            color: '#00FFFF',
+            color: '#6BBC43',
             fields: [{
                 title: '회의 알림',
                 value: '5분 후에 주간업무 회의를 시작 합니다.',
-                short: false
-            }]
-        }]
+                short: false,
+            }],
+        }],
     };
 
     // 슬랙 메시지 보내기
@@ -138,13 +139,13 @@ schedule.scheduleJob('55 14 * * 3', () => {
         username: '업무 알람',
         icon_emoji: ':bullhorn:',
         attachments: [{
-            color: '#00FFFF',
+            color: '#6BBC43',
             fields: [{
                 title: '회의 알림',
                 value: '5분 후에 TRS 주간업무 회의를 시작 합니다.',
-                short: false
-            }]
-        }]
+                short: false,
+            }],
+        }],
     };
 
     // 슬랙 메시지 보내기
@@ -161,13 +162,13 @@ schedule.scheduleJob('0 12 * * 1-5', () => {
         username: '업무 알람',
         icon_emoji: ':meow_bread:',
         attachments: [{
-            color: '#00FFFF',
+            color: '#CF2511',
             fields: [{
                 title: '점심 알림',
                 value: '신나는 점심 시간 입니다.\n빨리 엘베 앞으로 고고고~~',
-                short: false
-            }]
-        }]
+                short: false,
+            }],
+        }],
     };
 
     // 슬랙 메시지 보내기

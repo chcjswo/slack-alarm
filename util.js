@@ -1,4 +1,5 @@
 const Slack = require('slack-node');
+
 const env = process.env.NODE_ENV || 'development';
 
 /**
