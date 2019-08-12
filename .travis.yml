@@ -13,7 +13,4 @@ branches:
   only:
     - master
 notifications:
-  slack:
-    rooms:
-      - mocadevs:0GFPHOOopFep911ZGvAq2eyV#build
-      - mocadevs:0GFPHOOopFep911ZGvAq2eyV#_personal-projects
+  slack: ${SLACK}
