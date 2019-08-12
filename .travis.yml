@@ -12,3 +12,5 @@ cache:
 branches:
   only:
     - master
+notifications:
+  slack: ${slack}
