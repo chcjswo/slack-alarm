@@ -66,7 +66,7 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
  */
 schedule.scheduleJob('0 18 * * 1-4', () => {
     const message = {
-        username: '업무 시간 알림',
+        username: '업무 알람',
         icon_emoji: ':mario_luigi_dance:',
         attachments: [{
             color: '#C35FB3',
@@ -94,7 +94,7 @@ schedule.scheduleJob('0 18 * * 5', () => {
         attachments: [{
             color: '#C35FB3',
             fields: [{
-                title: '퇴근 시간 알림',
+                title: '퇴근 알림',
                 value: '완전 신나는 불금 퇴근 시간 입니다.\n술이라도 뽀지게 하세요~\n앗!! 일일 업무보고는 작성 하셨나요?',
                 short: false,
             }],
