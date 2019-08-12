@@ -43,7 +43,7 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
 
     const message = {
         username: '업무 알람',
-        icon_emoji: ':dabbing:',
+        icon_emoji: ':watching-you:',
         text: '하루 일과의 시작은 영어 한마디와 함께',
         attachments: [{
             color: '#00FFFF',
