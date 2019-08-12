@@ -49,8 +49,7 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
             color: '#00FFFF',
             fields: [{
                 title: `${JSON.parse(data.body)[0].author}`,
-                value: `${JSON.parse(data.body)[0].quote}\n\n
-                        10분 후에는 데일리 스탠드업 미팅을 시작합니다.`,
+                value: `${JSON.parse(data.body)[0].quote}\n\n10분 후에는 데일리 스탠드업 미팅을 시작합니다.`,
                 short: false,
             }],
         }],
