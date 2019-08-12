@@ -13,4 +13,4 @@ branches:
   only:
     - master
 notifications:
-  slack: mocadevs:${slack}
+  slack: mocadevs:0GFPHOOopFep911ZGvAq2eyV
