@@ -13,4 +13,4 @@ branches:
   only:
     - master
 notifications:
-  slack: ${slack}
+  slack: mocadev:${slack}
