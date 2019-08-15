@@ -174,7 +174,7 @@ schedule.scheduleJob('10 18 * * 2', () => {
     };
 
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('스터디 알림을 보냈습니다.');
 });
