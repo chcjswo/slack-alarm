@@ -14,19 +14,6 @@ http.createServer((req, res) => {
 }).listen(process.env.PORT || 3100);
 
 /**
- * 슬랙 메시지 보내기
- *
- * @param message 메시지
- */
-const sendMessage2Slack = (message) => {
-    util.sendSlack(message, (err) => {
-        if (err) {
-            console.error('에러 발생 ===> ', err);
-        }
-    });
-};
-
-/**
  * 출근 알림
  */
 schedule.scheduleJob('0 9 * * 1-5', async () => {
@@ -56,7 +43,7 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
     };
 
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('업무 시작 알림을 보냈습니다.');
 });
@@ -79,7 +66,7 @@ schedule.scheduleJob('0 18 * * 1-4', () => {
     };
 
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('퇴근 알림을 보냈습니다.');
 });
@@ -102,7 +89,7 @@ schedule.scheduleJob('0 18 * * 5', () => {
     };
 
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('퇴근 알림을 보냈습니다.');
 });
@@ -125,7 +112,7 @@ schedule.scheduleJob('55 10 * * 2', () => {
     };
 
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('회의 알림을 보냈습니다.');
 });
@@ -148,7 +135,7 @@ schedule.scheduleJob('55 14 * * 3', () => {
     };
 
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('회의 알림을 보냈습니다.');
 });
@@ -157,21 +144,14 @@ schedule.scheduleJob('55 14 * * 3', () => {
  * 점심시간 알림
  */
 schedule.scheduleJob('0 12 * * 1-5', () => {
-    const message = {
-        username: '업무 알람',
-        icon_emoji: ':meow_bread:',
-        attachments: [{
-            color: '#CF2511',
-            fields: [{
-                title: '점심 알림',
-                value: '신나는 점심 시간 입니다.\n빨리 엘베 앞으로 고고고~~',
-                short: false,
-            }],
-        }],
-    };
-
+    const message = util.makeSlackMessage(
+        'meow_bread',
+        '#CF2511',
+        '점심 알림',
+        '점심 알림\' \'신나는 점심 시간 입니다.\\n빨리 엘베 앞으로 고고고~~'
+    );
     // 슬랙 메시지 보내기
-    sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('점심 알림을 보냈습니다.');
 });

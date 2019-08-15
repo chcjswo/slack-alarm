@@ -22,7 +22,7 @@ module.exports = {
         ],
         "linebreak-style": [
             "error",
-            "unix"
+            "windows"
         ],
         "quotes": [
             "error",
@@ -33,6 +33,8 @@ module.exports = {
             "always"
         ],
         "no-console": "off",
-        "object-curly-spacing": 2
+        "object-curly-spacing": 2,
+        "comma-dangle": 0,
+        "arrow-body-style": 2
     }
 };
