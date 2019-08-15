@@ -44,7 +44,7 @@ const sendMessage2Slack = (message) => {
  */
 const makeSlackMessage = (emoji, color, title, value) => ({
     username: '업무 알람',
-    icon_emoji: emoji,
+    icon_emoji: `:${emoji}:`,
     attachments: [{
         color,
         fields: [{
