@@ -98,7 +98,7 @@ schedule.scheduleJob('55 14 * * 3', () => {
     const message = util.makeSlackMessage(
         'bullhorn',
         '#6BBC43',
-        '점심 알림',
+        'TRS 회의 알림',
         '5분 후에 TRS 주간업무 회의를 시작 합니다.'
     );
 
