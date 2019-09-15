@@ -46,6 +46,7 @@ const makeSlackMessage = (emoji, color, title, value) => ({
     username: '업무 알람',
     icon_emoji: `:${emoji}:`,
     attachments: [{
+        fallback: '개발 2팀 알람이 도착 했습니다.',
         color,
         fields: [{
             title,
