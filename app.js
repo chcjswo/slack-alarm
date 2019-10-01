@@ -129,15 +129,25 @@ schedule.scheduleJob('0 12 * * 1-5', () => {
  * 스터디 알림
  */
 schedule.scheduleJob('10 18 * * 2', () => {
-    const message = util.makeSlackMessage(
-        'open_book',
-        '#007A5A',
-        '스터디 알림',
-        '스터디~ 스터디~ 신나는 노래~ 나도 한번 불러 본다~\n곧 스터디 시작입니다 13층으로 고고고~~'
-    );
+    // const message = util.makeSlackMessage(
+    //     'open_book',
+    //     '#007A5A',
+    //     '스터디 알림',
+    //     '스터디~ 스터디~ 신나는 노래~ 나도 한번 불러 본다~\n곧 스터디 시작입니다 13층으로 고고고~~'
+    // );
 
-    // 슬랙 메시지 보내기
-    util.sendMessage2Slack(message);
+    // // 슬랙 메시지 보내기
+    // util.sendMessage2Slack(message);
 
     console.log('스터디 알림을 보냈습니다.');
+});
+
+
+/**
+ * Heroku sleep 방지용
+ */
+schedule.scheduleJob('*/10 * * * *', () => {
+    http.get('https://slack-alarm.herokuapp.com/');
+
+    console.log('Heroku sleep 방지용 신호를 보냈습니다.');
 });
