@@ -1,6 +1,7 @@
 const schedule = require('node-schedule');
 const got = require('got');
 const http = require('http');
+const https = require('https');
 const util = require('./util');
 
 require('dotenv').config();
@@ -147,7 +148,7 @@ schedule.scheduleJob('10 18 * * 2', () => {
  * Heroku sleep 방지용
  */
 schedule.scheduleJob('*/10 * * * *', () => {
-    http.get('https://slack-alarm.herokuapp.com/');
+    https.get('https://slack-alarm.herokuapp.com/');
 
     console.log('Heroku sleep 방지용 신호를 보냈습니다.');
 });
