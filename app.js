@@ -95,19 +95,19 @@ schedule.scheduleJob('55 10 * * 2', () => {
 /**
  * TRS 주간업무 회의 알림
  */
-schedule.scheduleJob('55 14 * * 3', () => {
-    const message = util.makeSlackMessage(
-        'bullhorn',
-        '#6BBC43',
-        'TRS 회의 알림',
-        '5분 후에 TRS 주간업무 회의를 시작 합니다.'
-    );
+// schedule.scheduleJob('55 14 * * 3', () => {
+//     const message = util.makeSlackMessage(
+//         'bullhorn',
+//         '#6BBC43',
+//         'TRS 회의 알림',
+//         '5분 후에 TRS 주간업무 회의를 시작 합니다.'
+//     );
 
-    // 슬랙 메시지 보내기
-    util.sendMessage2Slack(message);
+//     // 슬랙 메시지 보내기
+//     util.sendMessage2Slack(message);
 
-    console.log('회의 알림을 보냈습니다.');
-});
+//     console.log('회의 알림을 보냈습니다.');
+// });
 
 /**
  * 점심시간 알림
