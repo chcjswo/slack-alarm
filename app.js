@@ -143,7 +143,6 @@ schedule.scheduleJob('10 18 * * 2', () => {
     console.log('스터디 알림을 보냈습니다.');
 });
 
-
 /**
  * Heroku sleep 방지용
  */
@@ -151,4 +150,13 @@ schedule.scheduleJob('*/10 * * * *', () => {
     https.get('https://slack-alarm.herokuapp.com/');
 
     console.log('Heroku sleep 방지용 신호를 보냈습니다.');
+});
+
+/**
+ * 점심 선택 알림
+ */
+schedule.scheduleJob('10 11 * * 1-5', () => {
+    https.post('https://lunch.mocadev.me/api/v2/slack/choice/');
+
+    console.log('점심선택 알람을 보냈습니다.');
 });
