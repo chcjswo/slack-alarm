@@ -156,7 +156,7 @@ schedule.scheduleJob('*/10 * * * *', () => {
  * 점심 선택 알림
  */
 schedule.scheduleJob('10 11 * * 1-5', () => {
-    https.post('https://lunch.mocadev.me/api/v2/slack/choice/');
+    got.post("https://lunch.mocadev.me/api/v2/slack/choice/");
 
     // console.log('점심선택 알람을 보냈습니다.');
 });
