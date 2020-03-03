@@ -25,6 +25,7 @@
     "author": "chcjswo",
     "license": "MIT",
     "dependencies": {
+        "cheerio": "1.0.0-rc.3",
         "dotenv": "^8.0.0",
         "got": "^9.6.0",
         "node-schedule": "^1.3.2",
