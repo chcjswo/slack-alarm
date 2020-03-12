@@ -16,7 +16,6 @@ const cheerio = require('cheerio');
 
         $ = cheerio.load(cityOccurrenceRes.body);
         const pm = $('#content > div > div.data_table.mgt24 > table > tbody > tr.sumline > td:nth-child(2)').text();
-
         const data = `${title}\n확진환자수: ${confirmed} 명\n전일대비확진환자증감: ${pm} 명\n확진환자 격리해제: ${release} 명\n사망자: ${death} 명\n검사진행: ${progress} 명`;
 
         console.log(data);
