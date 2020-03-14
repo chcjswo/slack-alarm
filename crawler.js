@@ -8,9 +8,9 @@ const cheerio = require('cheerio');
 
         let $ = cheerio.load(occurrenceRes.body);
 
-        const title = $('#content > div > p:nth-child(4)').text();
+        const title = $('#content > div > p').text();
         const confirmed = $('#content > div > div:nth-child(6) > table > tbody > tr > td:nth-child(1)').text();
-        const release = $('#content > div > div:nth-child(6) > table > tbody > tr > td:nth-child(2)').text();
+        const release = $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(2)').text();
         const death = $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(3)').text();
         const progress = $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(7)').text();
 

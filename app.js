@@ -165,15 +165,15 @@ schedule.scheduleJob('10 11 * * 1-5', () => {
 /**
  * 코로나 바이러스 알림 알림
  */
-schedule.scheduleJob('1 9 * * 1-7', async () => {
+schedule.scheduleJob('10 10 * * 1-7', async () => {
     const occurrenceRes = await got('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=11&ncvContSeq=&contSeq=&board_id=&gubun=', { retries: 5 });
     const cityOccurrenceRes = await got('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=', { retries: 5 });
 
     let $ = cheerio.load(occurrenceRes.body);
 
-    const title = $('#content > div > p:nth-child(4)').text();
+    const title = $('#content > div > p').text();
     const confirmed = $('#content > div > div:nth-child(6) > table > tbody > tr > td:nth-child(1)').text();
-    const release = $('#content > div > div:nth-child(6) > table > tbody > tr > td:nth-child(2)').text();
+    const release = $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(2)').text();
     const death = $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(3)').text();
     const progress = $('#content > div > div.data_table.mgt16.mini > table > tbody > tr > td:nth-child(7)').text();
 
