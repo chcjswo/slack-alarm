@@ -7,7 +7,6 @@ const cheerio = require('cheerio');
         const cityOccurrenceRes = await got('http://ncov.mohw.go.kr/bdBoardList_Real.do?brdId=1&brdGubun=13&ncvContSeq=&contSeq=&board_id=&gubun=', { retries: 5 });
 
         let $ = cheerio.load(occurrenceRes.body);
-
         const title = $('#content > div > p').text();
         const confirmed = $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(1)').text();
         const release = $('#content > div > div:nth-child(5) > table > tbody > tr > td:nth-child(2)').text();
