@@ -113,16 +113,16 @@ schedule.scheduleJob('55 10 * * 2', () => {
 /**
  * 점심시간 알림
  */
-schedule.scheduleJob('0 12 * * 1-5', () => {
-    // const message = util.makeSlackMessage(
-    //     'meow_bread',
-    //     '#CF2511',
-    //     '점심 알림',
-    //     '신나는 점심 시간 입니다.\n빨리 엘베 앞으로 고고고~~'
-    // );
+schedule.scheduleJob('0 12 * * 3', () => {
+    const message = util.makeSlackMessage(
+        'meow_bread',
+        '#CF2511',
+        '점심 알림',
+        '신나는 점심 시간 입니다.\n빨리 엘베 앞으로 고고고~~'
+    );
 
     // 슬랙 메시지 보내기
-    // util.sendMessage2Slack(message);
+    util.sendMessage2Slack(message);
 
     console.log('점심 알림을 보냈습니다.');
 });
@@ -156,8 +156,8 @@ schedule.scheduleJob('*/10 * * * *', () => {
 /**
  * 점심 선택 알림
  */
-schedule.scheduleJob('10 11 * * 1-5', () => {
-    // got.post('https://lunch.mocadev.me/api/v2/slack/choice/');
+schedule.scheduleJob('10 11 * * 3', () => {
+    got.post('https://lunch.mocadev.me/api/v2/slack/choice/');
 
     console.log('점심선택 알람을 보냈습니다.');
 });
