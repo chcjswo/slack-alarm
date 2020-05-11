@@ -19,21 +19,22 @@ http.createServer((req, res) => {
  * 출근 알림
  */
 schedule.scheduleJob('0 9 * * 1-5', async () => {
-    const client = got.extend({
-        baseUrl: 'https://andruxnet-random-famous-quotes.p.mashape.com',
-        headers: {
-            'X-Mashape-Key': process.env.MashapeKey,
-            Accept: 'application/json',
-        },
-    });
+    // const client = got.extend({
+    //     baseUrl: 'https://andruxnet-random-famous-quotes.p.mashape.com',
+    //     headers: {
+    //         'X-Mashape-Key': process.env.MashapeKey,
+    //         Accept: 'application/json',
+    //     },
+    // });
 
     // quotes 사이트 호출하고 메시지 받기
-    const data = await client.get('/?cat=famous&count=1');
+    // const data = await client.get('/?cat=famous&count=1');
     const message = util.makeSlackMessage(
         'watching-you',
         '#00FFFF',
-        JSON.parse(data.body)[0].author,
-        `${JSON.parse(data.body)[0].quote}\n\n10분 후에는 데일리 스탠드업 미팅을 시작합니다.`
+        // JSON.parse(data.body)[0].author,
+        // `${JSON.parse(data.body)[0].quote}\n\n10분 후에는 데일리 스탠드업 미팅을 시작합니다.`
+        '10분 후에는 데일리 스탠드업 미팅을 시작합니다.'
     );
 
     // 슬랙 메시지 보내기
