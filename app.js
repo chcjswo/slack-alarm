@@ -79,7 +79,7 @@ schedule.scheduleJob('0 18 * * 5', () => {
 /**
  * 주간업무 회의 알림
  */
-schedule.scheduleJob('55 10 * * 2', () => {
+schedule.scheduleJob('25 9 * * 2', () => {
     const message = util.makeSlackMessage(
         'bullhorn',
         '#6BBC43',
