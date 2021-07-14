@@ -18,19 +18,20 @@ http.createServer((req, res) => {
 /**
  * 출근 알림
  */
-schedule.scheduleJob('0 9 * * 1-5', async () => {
+schedule.scheduleJob('*/1 * * * 1-5', async () => {
     const client = got.extend({
-        baseUrl: 'https://andruxnet-random-famous-quotes.p.rapidapi.com/',
+        prefixUrl: 'https://andruxnet-random-famous-quotes.p.rapidapi.com/',
         headers: {
             'x-rapidapi-host': 'andruxnet-random-famous-quotes.p.rapidapi.com',
             'x-rapidapi-key': process.env.rapidapiKey,
             'content-type': 'application/x-www-form-urlencoded',
             useQueryString: true
-        },
+        }
     });
 
     // quotes 사이트 호출하고 메시지 받기
-    const data = await client.get('/?cat=famous&count=1');
+    const data = await client.get();
+    console.log(data);
     const message = util.makeSlackMessage(
         'watching-you',
         '#00FFFF',
@@ -39,7 +40,9 @@ schedule.scheduleJob('0 9 * * 1-5', async () => {
     );
 
     // 슬랙 메시지 보내기
-    util.sendMessage2Slack(message);
+    //util.sendMessage2Slack(message);
+
+    console.log(message);
 
     console.log('업무 시작 알림을 보냈습니다.');
 });
